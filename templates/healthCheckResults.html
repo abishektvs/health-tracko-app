@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block bodyblock %}
+<div class="container">
+    <div class="jumbotron">
+        <div class="container text-center">
+            <h2 class="row">Hey {{user.username}} </h2>
+            <h3 class="row">Amazing to know your results</h3>
+        </div>
+        <ul class="container">
+            {% for line in user_results.values() %}
+            <li><h4>{{line}}</h4></li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

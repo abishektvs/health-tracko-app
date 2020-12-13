@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block bodyblock %}
+    <div class="container" style="text-align: center;">
+        <div class="jumbotron">
+            <h1> BMI Calculator </h1>
+            {% if BMI_data %}
+            <p> Dear {{ user.username }}, Your entry has been recorded successfully</p>
+            <p><strong>Result</strong></p>
+            <p>Your BMI is {{ BMI_data['bmi'] }}</p>
+            <img src='{{ BMI_data["visual"] }}' alt="">
+            <p>{{ BMI_data['status'] }}</p>
+            {% endif %}
+            <div class="container">
+                <h5>Click here to download your results</h5>
+                <a class="btn btn-warning" style='color: rgba(83, 3, 27, 0.76);' href="{{url_for('download_result')}}" ><span class="glyphicon glyphicon-save"></span> Download</a>
+                <button class="btn btn-warning" style='color: rgba(83, 3, 27, 0.76);' onclick="mailResult()"><span class="glyphicon glyphicon-cloud-upload"></span> Email to my ID</button>
+            </div>
+            {% if errormsg %}
+            <br>
+            <p>Dear {{ username }}</p>
+            <h4 id="response">{{ errormsg }}</h4>
+            <h4>Try adding few records by selecting save results options</h4>
+            <p><a class="btn btn-primary" href="{{url_for('bmi_page')}}" ><span class="glyphicon glyphicon-gear"></span> BMI again ?</a></p>
+            <p><a class="btn btn-primary" href="{{url_for('user_homepage')}}" ><span class="glyphicon glyphicon-home"></span> Return Homepage</a></p>
+            {% else %}
+            <h4 id="response"></h4>
+            {% endif %}
+            
+        </div>
+    </div>
+    <script>
+
+        function mailResult() {
+            var xhr = new XMLHttpRequest()
+            document.getElementById('response').innerHTML = 'Result is being processed !'
+            xhr.open('Get', '{{url_for("email_result")}}');
+            xhr.send()
+            xhr.onload = function(){
+                document.getElementById('response').innerHTML = xhr.responseText
+            }
+        }
+    </script>
+{% endblock %}

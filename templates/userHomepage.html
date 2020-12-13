@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block headblock %}
+<script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
+{% endblock %}
+
+{% block bodyblock %}
+<div class="container">
+    <div class="jumbotron">
+        <h1 class="hidden-xs hidden-sm" style="text-align: center;"> Welcome {{user.username}} !</h1>
+        <h1 class="visible-xs visible-sm" style="text-align: center;"> Welcome<br>{{user.username}} !</h1>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-4">
+            <div class="thumbnail">
+            <img src="static\images\BMI 3.png" alt="static\images\BMI.jpg">
+            <div class="caption" style="text-align: center;">
+                <h3>BMI</h3>
+                <h4 >Has Lockdown made you gain weight ?<br>Check your BMI (Body Mass Index)</h4>
+                <a href='{{url_for("bmi_page")}}' class="btn btn-default " role="button">Check BMI</a>
+            </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-4">
+            <div class="thumbnail">
+            <img src="static\images\eyetest3.jpg" alt="static\images\eyetest.jpg">
+            <div class="caption" style="text-align: center;">
+                <h3>Vision Test</h3>
+                <h4>Desperate about your Eye Vision<br> Check digitally here !!</h4>
+                <a href='https://www.essilor.com/en/vision-tests/test-your-vision/#' target="_blank" class="btn btn-default " role="button">Vision Test</a>
+            </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-4">
+            <div class="thumbnail">
+            <img src="static\images\healthlife2.jpg" alt="static\images\healthlife.jpg">
+            <div class="caption" style="text-align: center;">
+                <h3>Healthy Lifestyle</h3>
+                <h4>Get to know the daily care you take yourself<br> Refresh your habits </h4>
+                <a href='{{url_for("healthcheck_page")}}' class="btn btn-default " role="button">Health care?</a>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

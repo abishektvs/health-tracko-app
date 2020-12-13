@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% block bodyblock %}
+<div class="">
+    <div class="jumbotron container-fluid" style="background-color:white">
+        <div class="row" style="text-align: center;">
+            <div class="col-sm-4 col-md-4" >
+                <p><img src='static\images\healthy lifestyle.png'></p>
+            </div>
+            <div class="col-sm-4 col-md-4">
+                <h1 class="hidden-xs hidden-sm">Hey {{user.username}} !!</h1>
+                <h1 class="visible-xs visible-sm">Hey<br>{{user.username}} !!</h1>
+                <h2 class="row">You are here to check yourself honestly<BR> the daily sorts you do</h2>
+            </div>
+            <div class="col-sm-4 col-md-4 hidden-xs">
+                <p><img src='static\images\healthy lifestyle.png'></p>
+            </div>
+        </div>
+    </div>
+    <div class="container" >
+        <form action="{{url_for('healthcheck_analyze')}}" method="POST">
+            <div class="form-group jumbotron">
+                <h4>1 ) what is the amount of water you drink every day ?</h4>
+                <input type="radio" id="q1a1" name="q1" value="q1a1" required>
+                <label for="q1a1">More than 4 liters</label><br>
+                <input type="radio" id="q1a2" name="q1" value="q1a2" required>
+                <label for="q1a2">Between 2 and 4 liters</label><br>
+                <input type="radio" id="q1a3" name="q1" value="q1a3" required>
+                <label for="q1a3">less than 2 liters</label><br>
+            </div> 
+            <div class="form-group jumbotron">
+                <h4>2 ) when do you usually go to bed ?</h4>
+                <input type="radio" id="q2a1" name="q2" value="q2a1" required>
+                <label for="q2a1">Before 10 pm</label><br>
+                <input type="radio" id="q2a2" name="q2" value="q2a2" required>
+                <label for="q2a2">Between 10 pm and 12 am </label><br>
+                <input type="radio" id="q2a3" name="q2" value="q2a3" required>
+                <label for="q2a3">Between 12 and 2 am</label><br>
+                <input type="radio" id="q2a4" name="q2" value="q2a4" required>
+                <label for="q2a4">After 2 am</label><br>
+            </div>
+            <div class="form-group jumbotron">
+                <h4>3 ) Do you follow your sleeping cycle properly ?</h4>
+                <input type="radio" id="q3a1" name="q3" value="q3a1" required>
+                <label for="q3a1">Yes</label><br>
+                <input type="radio" id="q3a2" name="q3" value="q3a2" required>
+                <label for="q3a2">No</label><br>
+            </div>
+            <div class="form-group jumbotron">
+                <h4>4 ) Do you use mobile phones or laptops during an hour before sleep ?</h4>
+                <input  type="radio" id="q4a1" name="q4" value="q4a1" required>
+                <label  for="q4a1">Yes</label><br>
+                <input  type="radio" id="q4a2" name="q4" value="q4a2" required>
+                <label  for="q4a2">No</label><br>
+                <input  type="radio" id="q4a3" name="q4" value="q4a3" required>
+                <label  for="q4a3">Rarely</label><br>
+            </div>
+            <div class="form-group jumbotron">
+                <h4>5 ) which one of the types do you prefer to eat usually ?</h4>
+                <input type="radio" id="q5a1" name="q5" value="q5a1" required>
+                <label for="q5a1">Junk food</label><br>
+                <input type="radio" id="q5a2" name="q5" value="q5a2" required>
+                <label for="q5a2">Fast food</label><br>
+                <input type="radio" id="q5a3" name="q5" value="q5a3" required>
+                <label for="q5a3">Home made</label><br>
+            </div>
+            <div class="form-group jumbotron">
+                <h4>6 ) How much would you spend for yoga or gym ?</h4>
+                <input type="radio" id="q6a1" name="q6" value="q6a1" required>
+                <label for="q6a1">Never</label><br>
+                <input type="radio" id="q6a2" name="q6" value="q6a2" required>
+                <label for="q6a2">Rarely a month</label><br>
+                <input type="radio" id="q6a3" name="q6" value="q6a3" required>
+                <label for="q6a3">regularly</label><br>
+            </div>
+            <div class="form-group jumbotron">
+                <h4>7 ) Do you feel sickness often during weather changes ?</h4>
+                <input type="radio" id="q7a1" name="q7" value="q7a1" required>
+                <label for="q7a1">yes</label><br>
+                <input type="radio" id="q7a2" name="q7" value="q7a2" required>
+                <label for="q7a2">Not so often</label><br>
+                <input type="radio" id="q7a3" name="q7" value="q7a3" required>
+                <label for="q7a3">No </label><br>
+            </div>
+            <div class="form-group text-center">
+                <button class="btn btn-success" type="submit">Click to get results</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

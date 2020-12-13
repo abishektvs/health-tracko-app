@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block bodyblock %}
+    <div class="container" style="text-align: center;">
+        <div class="jumbotron">
+            <h1> BMI Calculator </h1>
+            <h3 class="hidden-xs hidden-sm">Hey {{user.username}} !!</h3>
+            <h3 class="visible-xs visible-sm">Hey<br>{{user.username}} !!</h3>
+            <h4> Welcome to the session for Body Mass Index measure </h4>
+            <br>
+            <div class="message">
+                <p>{{text | safe}}</p>
+            </div>
+            <form action="{{url_for('bmi_success')}}" method="POST">
+                <input hidden type="email" name="email_id" value="{{user.email_address}}" required/>
+                <div class="form-inline form-group">
+                    <label for="age">Age : </label>
+                    <input type="number" class="form-control" style="width: 50%;margin: auto;" id="age" name="age" placeholder="Enter your age" min="1" required/>
+                </div>
+                <div class="form-inline form-group">
+                    <label for="weight" >weight : </label>
+                    <input type="number" class="form-control" style="width: 50%;margin: auto;" id="weight" name="weight" placeholder="weight in kg" min="5" max="150" step=".1" required/>
+                </div>
+                <div class="form-inline form-group">
+                    <label for="height" >Height : </label>
+                    <input type="number" class="form-control" style="width: 50%;margin: auto;" id="height" name="height" placeholder="height in cm" min="140" max="200" step=".1" required/>
+                </div>
+                <div class= "form-inline">
+                    <div class="row visible-xs"><input type="checkbox" id="save" name="save" value="True"/> Save results</div>
+                    <label class="visible-xs" for="save" > Check box to save this result for processing.. (Recommended) </label>
+                    <div class="row visible-md visible-sm visible-lg"><input type="checkbox" id="save" name="save" value="True"/>
+                    <label for="save" > Check box to save this result for processing.. (Recommended) </label></div>
+                </div>
+                <button class="btn btn-default" type="Submit">Submit</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
